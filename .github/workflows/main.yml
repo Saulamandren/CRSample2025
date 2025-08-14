@@ -17,5 +17,8 @@ jobs:
         with:
           php-version: '8.2'
           tools: phpcs
+      - name: Install dependencies
+        run: |
+          composer install
       - name: Run phpcs
-        run: phpcs --report-source --report-full .
+        run: phpcs --standard=PSR2 --report-source --report-full src/
