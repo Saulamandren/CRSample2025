@@ -21,4 +21,4 @@ jobs:
         run: |
           composer install
       - name: Run phpcs
-        run: phpcs --standard=PSR2 --report-source --report-full src/
+        run: phpcs --report-full --standard=PSR2 src/
