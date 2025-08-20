@@ -2,25 +2,22 @@ name: My Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   php-cs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout the repo
         uses: actions/checkout@v3
 
-      - name: Set up PHP
+      - name: PHP Setup
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
           tools: phpcs
 
-      - name: Run PHP_CodeSniffer
-        run: phpcs --report-source --report-full
+      - name: Run phpcs
+        run: php phpcs.phar --report-diff --standard=PSR2 src/
